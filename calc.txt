@@ -1,0 +1,65 @@
+#calculator
+class calc():
+    def __init__(self,n2):
+        self.n2=n2
+    def add(self,n1):
+        self.n2+=n1
+        print(f'={self.n2}')
+    def sub(self,n1):
+        self.n2-=n1
+        print(f'={self.n2}')
+    def mul(self,n1):
+        self.n2*=n1
+        print(f'={self.n2}')
+    def div(self,n1):
+        self.n2/=n1
+        print(f'={self.n2}')
+    def exp(self,n1):
+        if exp<0:
+            print('Invalid Exponent number.')
+        else:
+            self.n2=self.n2**n1
+            print(f'={self.n2}')
+    def caloop(self):
+        while True:
+            try:
+                choice=input('Do you wish to Operations? (Y/N)')
+            except:
+                print('Wrong Option, Try Again.')
+                continue
+            else:
+                if choice.upper()=='Y':
+                    calc.option(self)
+                elif choice.upper()=='N':
+                    print('Thank you for using this Calculator.')
+                    break
+    def option(self):
+        print('''SELECT ONE OF THE FIVE OPERATORS:
+            \n+,-,*,/,**''')
+        while True:
+            try:
+                opt=input("\nChoose an option:")
+                n1=float(input('Enter number to perform operation with:'))
+            except:
+                print("Error: Enter a correct option.\n")
+                continue
+            else:
+                if opt=='+':
+                    calc.add(self,n1)
+                    calc.caloop(self)
+                elif opt=='-':
+                    calc.sub(self,n1)
+                    calc.caloop(self)
+                elif opt=='*':
+                    calc.mul(self,n1)
+                    calc.caloop(self)
+                elif opt=='/':
+                    calc.div(self,n1)
+                    calc.caloop(self)
+                elif opt=='**':
+                    calc.exp(self,n1)
+                    calc.caloop(self)
+                    
+n2=float(input('Enter starting number:'))
+val=calc(n2)
+val.option()
