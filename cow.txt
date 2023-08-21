@@ -1,0 +1,3 @@
+Cow is a pet animal.
+Cow gives us milk.
+Cow has 4 feet

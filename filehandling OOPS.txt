@@ -1,0 +1,37 @@
+class writing():
+    def __init__(self,name):
+        self.name=name
+    def writer(self):
+        n=int(input('Enter number of lines'))
+        with open(self.name,'w') as f:
+            for i in range(n):
+                s=input()
+                f.write(s)
+                f.write('\n')
+    def reader(self):
+        with open(self.name,'r') as f:
+            content=f.read()
+            print(content)
+    def prompter(self):
+        while True:
+            try:
+                print('''\nSelect options:
+                        \n1. Create/Write File
+                        \n2. Read File
+                        \n3. Exit
+                        \n''')
+                opt=int(input("Enter an option:"))
+                print('\n')
+            except:
+                print('Invalid option')
+            else:
+                if opt==1:
+                    writing.writer(self)
+                elif opt==2:
+                    writing.reader(self)
+                elif opt==3:
+                    break
+name=input('Enter file name:')
+name=name+'.txt'
+val=writing(name)
+val.prompter()

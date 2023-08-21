@@ -1,0 +1,65 @@
+# Homework: Write a program that behaves like an ATM using classes, encapsulate important data and store balance amount.
+
+class atm():
+    def __init__(self,name,acc,pin,balance=0):
+        self.name=name
+        self.acc=acc
+        self.pin=pin
+        self.balance=balance
+    def detail(self):
+        print(f'\nAccount Owner Name: {self.name}\nAccount Number: {self.acc}\nAccount PIN: ####\nAccount Balance: {self.balance}')
+    def dep(self,depo):
+        self.balance=self.balance+depo
+        print(f"\nCurrent account balance: Rs.{self.balance}\n")
+    def wit(self,witt):
+        if witt>self.balance:
+            print(f"Insufficient Funds, the amount of money you have is Rs.{self.balance}")
+        else:
+            self.balance=self.balance-witt
+            print(f"You have withdrawn: Rs.{witt}\nCurrent Balance: Rs.{self.balance}")
+    def bal(self):
+        print(f"Available Funds: Rs.{self.balance}")
+    def pinchange(self,oldpin,newpin=0):
+        if oldpin!=self.pin:
+            print("Invalid PIN.")
+        else:
+            newpin=int(input("Enter your new PIN:"))
+            self.pin=newpin
+            print("PIN has been updated.")
+        
+    def trans(self):
+        print("""\nList of Options:
+              \n1. Account Details
+              \n2. Check Balance
+              \n3. Deposit
+              \n4. Withdraw
+              \n5. Change PIN
+              \n6. Exit""")
+        while True:
+            try:
+                opt=int(input("\nChoose an option:"))
+            except:
+                print("Error: Enter a correct option.\n")
+                continue
+            else:
+                if opt==1:
+                    atm.detail(self)
+                elif opt==2:
+                    atm.bal(self)
+                elif opt==3:
+                    depo=int(input("Enter Deposit Amount:"))
+                    atm.dep(self,depo)
+                elif opt==4:
+                    witt=int(input("Enter Withdraw Amount:"))
+                    atm.wit(self,witt)
+                elif opt==5:
+                    oldpin=int(input("Enter your current PIN:"))
+                    atm.pinchange(self,oldpin)
+                elif opt==6:
+                    print("Thank you for using this ATM.")
+                    break
+name=input("Enter your name:")
+acc=int(input("Enter your account number:"))
+pin=int(input("Enter your PIN:"))
+value=atm(name,acc,pin)
+value.trans()
